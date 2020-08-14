@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block title %}Delete Charecter{% endblock title %}
+{% block content %}
+<p>Are you sure you want to delete "{{item}}"?</p>
+<form action="{% url 'charecters:delete_charecter' item.id %}" method="POST">
+  {% csrf_token %}
+  <a href="{% url 'charecters:display_charecters' %}">Cancel</a>
+  <input type="submit" name="Confirm" />
+</form>
+{% endblock %}

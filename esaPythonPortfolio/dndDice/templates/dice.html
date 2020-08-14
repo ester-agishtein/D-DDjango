@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}D&D Dice Roller {% endblock %}
+{% block javascript %}
+    <script type='text/javascript'>
+      function random(dice, id) {
+        var randInt = Math.floor(Math.random() * dice) + 1;
+        document.getElementById(id).innerHTML = randInt;
+      }
+    </script>
+    {% endblock %}
+ 
+    {% block content %}
+    <div class="header" style="
+    text-align: center;
+    font-family: fantasy;
+    font-size: 25vw;
+    ">
+      D&D  
+    </div>
+      <div style="text-align: center; display: flex; justify-content: space-evenly;" >
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(20, 'd20')"">d20</Button>
+            <div style="color:white" id='d20' ></div>
+        </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(12, 'd12')"">d12</button>
+            <div style="color:white" id='d12' ></div>
+        </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(10, 'd10')"">d10</button>
+            <div style="color:white" id='d10'></div>
+        </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(8, 'd8')"">d8</button>
+            <div style="color:white" id='d8' ></div>
+        </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(6, 'd6')"">d6</button>
+            <div style="color:white" id='d6' ></div>
+        </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-info" onclick="random(4, 'd4')"">d4</button>
+            <div style="color:white" id='d4' ></div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+
