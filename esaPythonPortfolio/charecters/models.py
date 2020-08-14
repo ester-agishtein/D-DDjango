@@ -7,6 +7,7 @@ class Charecter(models.Model):
     charecter_name = models.CharField(max_length=50)
     player_name = models.CharField(max_length=50)
     img_url = models.CharField(max_length=200)
+    team = models.ForeignKey("Team",  on_delete=models.CASCADE, blank=False)
 
     def __str__(self):
         return self.charecter_name
@@ -14,7 +15,6 @@ class Charecter(models.Model):
 
 class Team(models.Model):
     team_name = models.CharField(max_length=50)
-    players = models.ForeignKey("Charecter",  on_delete=models.CASCADE)
 
     def __str__(self):
         return self.team_name

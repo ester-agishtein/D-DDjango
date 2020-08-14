@@ -1,23 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-<a href="{% url 'charecters:create_charecter' %}">Create a Charecter</a>
-<h1>Your Charecters:</h1>
-{% for char in charecters %}
-<b>{{ char.charecter_name }}</b>
-<br />
-{{ char.player_name }}
-<br />
-{{ char.img_url }}
-<br />
-<a
-  class="btn btn-sm btn-info"
-  href="{% url 'charecters:update_charecter' char.id%}"
-  >Update</a
->
-<a
-  class="btn btn-sm btn-danger"
-  href="{% url 'charecters:delete_charecter' char.id%}"
-  >Delete</a
->
-<br />
-<br />
-{% endfor %} {% endblock %}
+<div>
+  <a href="{% url 'charecters:create_charecter' %}">Create a Charecter</a>
+  <h1>Your Charecters:</h1>
+  {% for char in charecters %}
+  <b>{{ char.charecter_name }}</b>
+  <br />
+  {{ char.player_name }}
+  <br />
+  {{ char.img_url }}
+  <br />
+  <a
+    class="btn btn-sm btn-info"
+    href="{% url 'charecters:update_charecter' char.id%}"
+    >Update</a
+  >
+  <a
+    class="btn btn-sm btn-danger"
+    href="{% url 'charecters:delete_charecter' char.id%}"
+    >Delete</a
+  >
+  <br />
+  <br />
+  {% endfor %}
+</div>
+{% endblock %}
