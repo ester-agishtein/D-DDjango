@@ -1,26 +1,45 @@
 {% extends 'base.html' %} {% block content %}
-<div>
-  <a href="{% url 'charecters:create_charecter' %}">Create a Charecter</a>
-  <h1>Your Charecters:</h1>
-  {% for char in charecters %}
-  <b>{{ char.charecter_name }}</b>
-  <br />
-  {{ char.player_name }}
-  <br />
-  {{ char.img_url }}
-  <br />
-  <a
-    class="btn btn-sm btn-info"
-    href="{% url 'charecters:update_charecter' char.id%}"
-    >Update</a
-  >
-  <a
-    class="btn btn-sm btn-danger"
-    href="{% url 'charecters:delete_charecter' char.id%}"
-    >Delete</a
-  >
-  <br />
-  <br />
-  {% endfor %}
+<div style="font-family: fantasy;">
+  <h1 style="margin:2vw; color:white; text-align: center;">Your Charecters:</h1>
+
+  <div class="container">
+    {% for char in charecters %}
+    <div class="row" style="margin:.5vw">
+      <div
+        class="col"
+        style="position: inherit; display: flex; flex-direction: column; "
+      >
+        <img
+          style="border-style: ridge; width:25vw; height:20vw; margin:auto"
+          src="{{ char.img_url }}"
+        />
+        <div
+          style="margin:auto; background-color:white; border-style: ridge; width:25vw; "
+        >
+          <br />
+          <h5>Charecter Name: {{ char.charecter_name }}</h5>
+
+          <h5>Player Name: {{ char.player_name }}</h5>
+
+          <h5>Team:{{ char.team }}</h5>
+          <div style="text-align: center">
+            <a
+              class="btn btn-sm btn-info"
+              href="{% url 'charecters:update_charecter' char.id%}"
+              style="width: 12vw"
+              >Update</a
+            >
+            <a
+              class="btn btn-sm btn-danger"
+              href="{% url 'charecters:delete_charecter' char.id %}"
+              style="width: 12vw"
+              >Delete</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

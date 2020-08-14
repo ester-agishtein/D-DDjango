@@ -1,25 +1,36 @@
 {% extends 'base.html' %} {% block content %}
-<div>
-  <a href="{% url 'charecters:create_team' %}">Create a Team</a>
-  <h1>Your Teams:</h1>
-  {% for team in teams %}
-  <b>{{ team.team_name }}</b>
-  {% for char in charecters %}
-  <b>{{ char.charecter_name }}</b>
-  <br />
-  {% endfor %}
-  <a
-    class="btn btn-sm btn-info"
-    href="{% url 'charecters:update_team' team.id%}"
-    >Edit Team Name</a
-  >
-  <a
-    class="btn btn-sm btn-danger"
-    href="{% url 'charecters:delete_team' team.id%}"
-    >Delete Team</a
-  >
-  <br />
-  <br />
+<div style="font-family: fantasy;">
+  <h1 style="margin:2vw; color:white; text-align: center;">Your Teams:</h1>
+
+  <div class="row" style="margin:.5vw">
+    {% for team in teams %}
+    <div
+      class="col"
+      style="position: inherit; display: flex; flex-direction: column; background-color: white "
+    >
+      <h2>Team Name: {{ team.team_name }}</h2>
+      <br />
+      <h2>Charecters in Team:</h2>
+      <br />
+      {% for char in charecters %}
+      <b>{{ char}}</b>
+      <br />
+      {% endfor %}
+      <br />
+      <a
+        class="btn btn-sm btn-info"
+        href="{% url 'charecters:update_team' team.id%}"
+        >Edit Team Name</a
+      >
+      <a
+        class="btn btn-sm btn-danger"
+        href="{% url 'charecters:delete_team' team.id%}"
+        >Delete Team</a
+      >
+      <br />
+      <br />
+    </div>
+  </div>
   {% endfor %}
 </div>
 {% endblock %}
