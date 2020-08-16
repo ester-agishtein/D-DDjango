@@ -1,36 +1,39 @@
 {% extends 'base.html' %} {% block content %}
-<div style="font-family: fantasy;">
+<div>
   <h1 style="margin:2vw; color:white; text-align: center;">Your Teams:</h1>
-
-  <div class="row" style="margin:.5vw">
-    {% for team in teams %}
-    <div
-      class="col"
-      style="position: inherit; display: flex; flex-direction: column; background-color: white "
-    >
+  {% for team in teams %}
+  <div
+    class="row"
+    style="text-align: center; width: 50%; margin-left:25vw;border-style: ridge"
+  >
+    <div class="col" style="background-color: white ">
+      <br />
       <h2>Team Name: {{ team.team_name }}</h2>
-      <br />
+
       <h2>Charecters in Team:</h2>
-      <br />
+
       {% for char in charecters %}
       <b>{{ char}}</b>
       <br />
       {% endfor %}
-      <br />
-      <a
-        class="btn btn-sm btn-info"
-        href="{% url 'charecters:update_team' team.id%}"
-        >Edit Team Name</a
-      >
-      <a
-        class="btn btn-sm btn-danger"
-        href="{% url 'charecters:delete_team' team.id%}"
-        >Delete Team</a
-      >
-      <br />
-      <br />
+
+      <div style="display: flex">
+        <a
+          class="btn btn-sm btn-info"
+          style="width: 50%"
+          href="{% url 'charecters:update_team' team.id%}"
+          >Edit Team Name</a
+        >
+        <a
+          class="btn btn-sm btn-danger"
+          style="width: 50%"
+          href="{% url 'charecters:delete_team' team.id%}"
+          >Delete Team</a
+        >
+      </div>
     </div>
   </div>
+  <br />
   {% endfor %}
 </div>
 {% endblock %}
