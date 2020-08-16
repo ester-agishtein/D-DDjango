@@ -1,10 +1,16 @@
 {% extends 'base.html' %} {% block title %} Create Charecter{% endblock title %}
 {% block content %}
-<div style="color: white">
+<h1
+  style="text-decoration: underline; color:white;margin-top:5vw; text-align: center"
+>
+  Create a Charecter
+</h1>
+<div style="background-color: lightgray; margin-top:5vw; padding:2vw">
+  <h1 style="text-decoration: underline">Charecter</h1>
   <form
     action=""
     method="POST"
-    style="display: inline-grid; padding-left: 35%; margin:5vw"
+    style="display: flex; flex-direction:column; padding-bottom:2vw"
   >
     {% csrf_token %} {{form}}
     <input type="submit" name="submit" />

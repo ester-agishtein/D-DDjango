@@ -1,7 +1,13 @@
 {% extends 'base.html' %} {% block title %} Create Team{% endblock title %}
 {%block content %}
-<div style="background-color: white">
-  <form action="" method="POST">
+<h1
+  style="text-decoration: underline; color:white;margin-top:5vw; text-align: center"
+>
+  Create a Team
+</h1>
+<div style="background-color: lightgray; margin-top:5vw; padding:2vw">
+  <h1 style="text-decoration: underline">Team</h1>
+  <form action="" method="POST" style="display: flex; flex-direction:column">
     {% csrf_token %} {{form}}
     <input type="submit" name="submit" />
   </form>

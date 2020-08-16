@@ -83,28 +83,17 @@ def update_team(request, pk):
 def display_teams(request):
 
     teams = Team.objects.all()
-    teams_ids = []
-    for team in teams:
-        team_id = team.id
-        teams_ids.append(team_id)
 
-    team_charecters = {}
+    context = {'teams': teams}
 
-    for team_id in teams_ids:
-        charecters = Charecter.objects.filter(team=team_id)
-        charecter_list = []
-        for charecter in charecters:
-            charecter_list.append(charecter.charecter_name)
-        team_charecters[team_id] = charecter_list
-
-    context = {'teams': teams, 'charecters': team_charecters}
-    print("team_charecters = ", team_charecters)
     return render(request, 'teams.html', context=context)
 
 
 def delete_team(request, pk):
     team = Team.objects.get(id=pk)
+    print("team = ", team)
     if request.method == "POST":
+        print("request.post = ", request.POST)
         team.delete()
         return redirect('charecters:display_teams')
     context = {'item': team}
