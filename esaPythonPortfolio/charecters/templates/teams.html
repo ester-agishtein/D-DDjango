@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block title %}Teams{% endblock title %}
+{% block content %}
 <div>
   <h1 style="margin:2vw; color:white; text-align: center;">Your Teams:</h1>
   {% for team in teams %}
@@ -9,21 +11,17 @@
     <div class="col" style="background-color: white ">
       <br />
       <h2>Team Name: {{ team.team_name }}</h2>
+      <h4>Notes</h4>
+      {{team.notes}}
 
-      <h2>Charecters in Team:</h2>
-
-      {% for char in charecters %}
-      <b>{{ char}}</b>
       <br />
-      {% endfor %}
-
       <div style="display: flex">
         <a
           class="btn btn-sm btn-info"
           style="width: 50%"
           href="{% url 'charecters:update_team' team.id%}"
-          >Edit Team Name</a
-        >
+          >Edit Team
+        </a>
         <a
           class="btn btn-sm btn-danger"
           style="width: 50%"

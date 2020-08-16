@@ -1,7 +1,13 @@
 {% extends 'base.html' %} {% block title %} Create Charecter{% endblock title %}
 {% block content %}
-<form action="" method="POST">
-  {% csrf_token %} {{form}}
-  <input type="submit" name="submit" />
-</form>
+<div style="color: white">
+  <form
+    action=""
+    method="POST"
+    style="display: inline-grid; padding-left: 35%; margin:5vw"
+  >
+    {% csrf_token %} {{form}}
+    <input type="submit" name="submit" />
+  </form>
+</div>
 {% endblock %}

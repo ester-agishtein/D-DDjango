@@ -83,13 +83,22 @@ def update_team(request, pk):
 def display_teams(request):
 
     teams = Team.objects.all()
-    charecter_list = []
+    teams_ids = []
     for team in teams:
         team_id = team.id
-        charecters = Charecter.objects.filter(team=team.id)
+        teams_ids.append(team_id)
+
+    team_charecters = {}
+
+    for team_id in teams_ids:
+        charecters = Charecter.objects.filter(team=team_id)
+        charecter_list = []
         for charecter in charecters:
             charecter_list.append(charecter.charecter_name)
-    context = {'teams': teams, 'charecters': charecter_list}
+        team_charecters[team_id] = charecter_list
+
+    context = {'teams': teams, 'charecters': team_charecters}
+    print("team_charecters = ", team_charecters)
     return render(request, 'teams.html', context=context)
 
 
